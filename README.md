@@ -1,20 +1,23 @@
 # Java Login System
 
-Sistema de gerenciamento de usuários desenvolvido em Java, com integração ao banco de dados MySQL utilizando JDBC.
+Sistema de gerenciamento de usuários desenvolvido em **Java**, utilizando **JDBC** para persistência de dados em um banco **MySQL**.
 
-Este projeto começou como um sistema simples em console, armazenando usuários em memória com `ArrayList` e depois em arquivo `.txt`. Em seguida, foi evoluído para utilizar banco de dados relacional com MySQL, deixando a aplicação mais próxima de um sistema real.
+O objetivo deste projeto foi praticar os principais conceitos da linguagem Java e evoluir um sistema simples em console para uma aplicação com persistência em banco de dados, seguindo uma estrutura organizada utilizando o padrão DAO.
+
+---
 
 ## Funcionalidades
 
-- Cadastro de usuários
-- Login de usuários
-- Listagem de usuários cadastrados
-- Busca de usuário por nome
-- Alteração de nome
-- Alteração de senha
-- Exclusão de usuários
-- Persistência de dados com MySQL
-- Integração com banco de dados usando JDBC
+- ✅ Cadastro de usuários
+- ✅ Login
+- ✅ Listagem de usuários
+- ✅ Busca de usuário por nome
+- ✅ Alteração de nome
+- ✅ Alteração de senha
+- ✅ Exclusão de usuários
+- ✅ Persistência dos dados em MySQL utilizando JDBC
+
+---
 
 ## Tecnologias utilizadas
 
@@ -26,7 +29,9 @@ Este projeto começou como um sistema simples em console, armazenando usuários 
 - Git
 - GitHub
 
-## Estrutura principal do projeto
+---
+
+## Estrutura do projeto
 
 ```text
 src
@@ -42,27 +47,31 @@ src
 └── ExcluirUsuarioBanco.java
 ```
 
-## Banco de dados
+---
 
-O projeto utiliza o banco de dados `login_system`.
+## Banco de Dados
 
-Script SQL utilizado:
+Banco utilizado:
 
 ```sql
-CREATE DATABASE IF NOT EXISTS login_system;
+CREATE DATABASE login_system;
+```
 
-USE login_system;
+Tabela:
 
-CREATE TABLE IF NOT EXISTS usuarios (
+```sql
+CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     senha VARCHAR(100) NOT NULL
 );
 ```
 
-## Como executar o projeto
+---
 
-1. Clone o repositório:
+## Como executar
+
+1. Clone o repositório.
 
 ```bash
 git clone https://github.com/ZergRJ/java-login-system.git
@@ -70,66 +79,81 @@ git clone https://github.com/ZergRJ/java-login-system.git
 
 2. Abra o projeto no IntelliJ IDEA.
 
-3. Crie o banco de dados no MySQL utilizando o script SQL acima.
+3. Crie o banco de dados utilizando o script SQL acima.
 
-4. Configure a conexão com o banco na classe `ConexaoBanco.java`:
+4. Crie um arquivo chamado:
 
-```java
-String url = "jdbc:mysql://localhost:3306/login_system";
-String usuario = "root";
-String senha = "sua_senha";
+```text
+config.properties
 ```
 
-5. Adicione o driver MySQL Connector/J ao projeto.
+na raiz do projeto.
 
-6. Execute a classe `Main.java`.
+Conteúdo:
 
-## Conceitos praticados
+```properties
+db.url=jdbc:mysql://localhost:3306/login_system
+db.user=root
+db.password=sua_senha
+```
 
-Durante o desenvolvimento deste projeto, foram praticados conceitos importantes de Java e banco de dados, como:
+5. Adicione o MySQL Connector/J ao projeto.
 
-- Programação orientada a objetos
+6. Execute a classe `Main`.
+
+---
+
+## O que foi praticado
+
+Durante o desenvolvimento deste projeto foram aplicados conceitos como:
+
+- Programação Orientada a Objetos
 - Encapsulamento
-- Classes e métodos
+- Construtores
 - CRUD
 - JDBC
+- DAO (Data Access Object)
 - Connection
 - PreparedStatement
 - ResultSet
-- DAO
-- Separação de responsabilidades
 - Integração com MySQL
-- Versionamento com Git e GitHub
+- Tratamento de exceções
+- Organização de responsabilidades entre as classes
+- Versionamento utilizando Git e GitHub
+
+---
 
 ## Evolução do projeto
 
-### Primeira versão
+O projeto foi desenvolvido em etapas para acompanhar minha evolução no aprendizado de Java.
 
-A primeira versão do sistema utilizava `ArrayList` para armazenar os usuários em memória.
+### Versão 1
 
-### Segunda versão
+Armazenamento dos usuários utilizando `ArrayList`.
 
-Depois, o projeto passou a salvar os dados em um arquivo `.txt`.
+### Versão 2
 
-### Versão atual
+Persistência dos usuários em arquivo `.txt`.
 
-A versão atual utiliza MySQL com JDBC, permitindo cadastrar, listar, buscar, alterar, excluir e realizar login com dados armazenados no banco.
+### Versão 3 (Atual)
 
-## Roadmap
+Persistência utilizando **MySQL + JDBC**, removendo completamente a dependência do armazenamento em memória e em arquivos.
 
-- [x] CRUD em memória
-- [x] Persistência em arquivo `.txt`
-- [x] Integração com MySQL
-- [x] CRUD com JDBC
-- [ ] Organização em pacotes
-- [ ] Validação de usuário duplicado
-- [ ] Melhor tratamento de erros
-- [ ] Criptografia de senhas
-- [ ] Migração para Maven
-- [ ] Spring Boot
-- [ ] API REST
-- [ ] Interface web
+---
+
+## Próximas melhorias
+
+- Organizar o projeto em pacotes
+- Impedir cadastro de usuários duplicados
+- Criptografar senhas
+- Melhorar o tratamento de exceções
+- Utilizar Maven para gerenciamento de dependências
+- Migrar para Spring Boot
+- Desenvolver uma API REST
+- Criar uma interface gráfica para o sistema
+
+---
 
 ## Autor
 
-Desenvolvido por Gean Lucas.
+Desenvolvido por **Gean Lucas**.
